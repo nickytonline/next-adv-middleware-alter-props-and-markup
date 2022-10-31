@@ -10,13 +10,13 @@ export async function middleware(req: NextRequest) {
 	const response = await request.next();
 
 	response.transformData((data) => {
-		data.prices = [
+		data.pageProps.prices = [
 			{ id: 1, price: 20 },
 			{ id: 2, price: 30 },
 			{ id: 3, price: 78 },
 		];
 
-		response.replaceText('li:first-of-type', data.prices[0].price);
+		response.replaceText('li:first-of-type', data.pageProps.prices[0].price);
 
 		return data;
 	});
